@@ -14,9 +14,13 @@ class MusicPlayerViewController: UIViewController {
     
     let myMusicPlayer = AVPlayer()
     
-    var currentIndex = 2
+    var currentIndex = 3
     
     var gradientLayer: CAGradientLayer!
+    
+    var playModeImageView : UIImageView?
+    
+    var playMode : PlayMode? = .repeatAll
     
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
@@ -76,6 +80,11 @@ class MusicPlayerViewController: UIViewController {
             let pauseImage = UIImage(systemName: "pause.fill")!
             playOrPauseImageView.setSymbolImage(pauseImage, contentTransition: .replace.downUp, options: .speed(2))
             
+            UIView.animate(withDuration: 0.3) {
+                self.coverImageView.transform = CGAffineTransform(scaleX: 2.3, y: 2.3)
+            }
+            
+            
         case .waitingToPlayAtSpecifiedRate:
             print("waitingToPlayAtSpecifiedRate")
             
@@ -84,6 +93,10 @@ class MusicPlayerViewController: UIViewController {
             myMusicPlayer.pause()
             let playImage = UIImage(systemName: "play.fill")!
             playOrPauseImageView.setSymbolImage(playImage, contentTransition: .replace.downUp, options: .speed(2))
+            
+            UIView.animate(withDuration: 0.3) {
+                self.coverImageView.transform = CGAffineTransform.identity
+            }
             
         default:
             break
@@ -120,11 +133,44 @@ class MusicPlayerViewController: UIViewController {
     
     
     @IBAction func nextSong(_ sender: UIButton) {
-        currentIndex += 1
-        if currentIndex == songs.count {
-            currentIndex = 0
+        forwardImageView.addSymbolEffect(.bounce.up)
+        forwardImageView.addSymbolEffect(.bounce.down)
+        
+        if playMode == .shuffle {
+            currentIndex = Int.random(in: 0...3)
+            playNewSong(from: currentIndex)
+            
+        } else{
+            
+            currentIndex += 1
+            if currentIndex == songs.count {
+                currentIndex = 0
+            }
+            playNewSong(from: currentIndex)
         }
-        playNewSong(from: currentIndex)
+        
+    }
+    
+    
+    
+    
+    
+    @IBAction func previousSong(_ sender: UIButton) {
+        backwardImageView.addSymbolEffect(.bounce.up)
+        backwardImageView.addSymbolEffect(.bounce.down)
+        
+        if playMode == .shuffle {
+            currentIndex = Int.random(in: 0...3)
+            playNewSong(from: currentIndex)
+            
+        } else{
+            
+            currentIndex -= 1
+            if currentIndex < 0  {
+                currentIndex = songs.count - 1
+            }
+            playNewSong(from: currentIndex)
+        }
     }
     
     
@@ -135,11 +181,32 @@ class MusicPlayerViewController: UIViewController {
     
     
     
-    
-    
-    
-    
-    
+    @IBAction func playModeChange(_ sender: UIButton) {
+        switch playMode {
+            
+        case .repeatAll :
+            playMode = .repeatOne
+            
+            playModeImageView?.setSymbolImage(UIImage(systemName: "repeat.1")!, contentTransition: .replace.downUp)
+            
+            print("repeat.1")
+            
+        case .repeatOne :
+            playMode = .shuffle
+            
+            playModeImageView?.setSymbolImage(UIImage(systemName: "shuffle")!, contentTransition: .replace.downUp)
+            
+            print("shuffle")
+        case .shuffle :
+            playMode = .repeatAll
+            
+            playModeImageView?.setSymbolImage(UIImage(systemName: "repeat")!, contentTransition: .replace.downUp)
+            
+            print("repeat")
+        default :
+            print("default")
+        }
+    }
     
     
     
@@ -181,7 +248,6 @@ class MusicPlayerViewController: UIViewController {
         self.view.addSubview(SCview)
         SCview.addSubview(coverImageView)
         SCview.frame.size = coverImageView.frame.size
-        SCview.addSubview(coverImageView)
         SCview.layer.shadowOpacity = 0.5
         SCview.layer.shadowOffset = CGSize(width: 5, height: 5)
         SCview.layer.cornerRadius = 10
@@ -217,6 +283,8 @@ class MusicPlayerViewController: UIViewController {
         myMusicPlayer.replaceCurrentItem(with: playItem)
         
         
+        NotificationCenter.default.addObserver(self, selector: #selector(songDidEnd), name: AVPlayerItem.didPlayToEndTimeNotification, object: nil)
+        
         songProgressSliderOutlet.isEnabled = false
         
         volumeSliderOutlet.minimumValue = 0
@@ -229,7 +297,6 @@ class MusicPlayerViewController: UIViewController {
         self.view.addSubview(SCview)
         SCview.addSubview(coverImageView)
         SCview.frame.size = coverImageView.frame.size
-        SCview.addSubview(coverImageView)
         SCview.layer.shadowOpacity = 0.5
         SCview.layer.shadowOffset = CGSize(width: 5, height: 5)
         SCview.layer.cornerRadius = 10
@@ -244,6 +311,11 @@ class MusicPlayerViewController: UIViewController {
         let colors = coverImageView.image?.getColors()
         createGradientBackground(primaryColor: colors?.primary, secondaryColor: colors?.secondary)
         
+        // 播放模式小圖示
+        playModeImageView = UIImageView(image: UIImage(systemName: "repeat"))
+        playModeImageView!.frame = CGRect(x: playModeButtonOutlet.bounds.width - 10, y: 0, width: 15, height: 15)
+        playModeButtonOutlet.addSubview(playModeImageView!)
+        
         
         // 使用 addPeriodicTimeObserver 方法追蹤音樂播放進度，每秒觸發一次時間觀察者。
         // 當 musicProgressSlider 沒有被滑動時執行 updateMusicProgress，避免更新滑塊導致抖動。
@@ -254,11 +326,38 @@ class MusicPlayerViewController: UIViewController {
                 // print("音樂進度條沒有被拖動，進入 updateMusicProgress 方法")
                 self.updateMusicProgress()
             }
+        }
+    }
+    
+    
+    
+    @objc func songDidEnd() {
+        switch playMode {
             
+        case .repeatAll :
+            currentIndex += 1
+            if currentIndex == songs.count {
+                currentIndex = 0
+            }
+            playNewSong(from: currentIndex)
+            myMusicPlayer.play()
+            
+        case .repeatOne :
+            
+            playNewSong(from: currentIndex)
+            myMusicPlayer.play()
+            
+        case .shuffle :
+            currentIndex = Int.random(in: 0...3)
+            playNewSong(from: currentIndex)
+            myMusicPlayer.play()
+            
+        default :
+            return
         }
         
-        
     }
+    
     
     
     
@@ -267,7 +366,7 @@ class MusicPlayerViewController: UIViewController {
         guard let primaryColor = primaryColor, let secondaryColor = secondaryColor else {
             return
         }
-
+        
         gradientLayer.colors = [primaryColor.cgColor, secondaryColor.cgColor]
     }
     
