@@ -9,21 +9,34 @@
 /* Begin PBXBuildFile section */
 		9CB57B922ACD29FB00353589 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB57B912ACD29FB00353589 /* AppDelegate.swift */; };
 		9CB57B942ACD29FB00353589 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB57B932ACD29FB00353589 /* SceneDelegate.swift */; };
-		9CB57B962ACD29FB00353589 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB57B952ACD29FB00353589 /* ViewController.swift */; };
 		9CB57B992ACD29FB00353589 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CB57B972ACD29FB00353589 /* Main.storyboard */; };
 		9CB57B9B2ACD29FC00353589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CB57B9A2ACD29FC00353589 /* Assets.xcassets */; };
 		9CB57B9E2ACD29FC00353589 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CB57B9C2ACD29FC00353589 /* LaunchScreen.storyboard */; };
+		9CB57BA62ACD2A5500353589 /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB57BA52ACD2A5500353589 /* MusicPlayerViewController.swift */; };
+		9CB57BAB2ACEE7BF00353589 /* 長途夜車.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CB57BA72ACEE7BF00353589 /* 長途夜車.mp3 */; };
+		9CB57BAC2ACEE7BF00353589 /* 感同身受 live.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CB57BA82ACEE7BF00353589 /* 感同身受 live.mp3 */; };
+		9CB57BAD2ACEE7BF00353589 /* Anytime Anywhere.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CB57BA92ACEE7BF00353589 /* Anytime Anywhere.mp3 */; };
+		9CB57BAE2ACEE7BF00353589 /* Dancing With Your Ghost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CB57BAA2ACEE7BF00353589 /* Dancing With Your Ghost.mp3 */; };
+		9CB57BB12ACEE84000353589 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB57BB02ACEE84000353589 /* MusicModel.swift */; };
+		9CB57BB32ACF0FA100353589 /* PlayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB57BB22ACF0FA100353589 /* PlayMode.swift */; };
+		9CB57BB92AD05FDF00353589 /* UIImageColors in Frameworks */ = {isa = PBXBuildFile; productRef = 9CB57BB82AD05FDF00353589 /* UIImageColors */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9CB57B8E2ACD29FB00353589 /* MusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB57B912ACD29FB00353589 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CB57B932ACD29FB00353589 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9CB57B952ACD29FB00353589 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9CB57B982ACD29FB00353589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CB57B9A2ACD29FC00353589 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CB57B9D2ACD29FC00353589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CB57B9F2ACD29FC00353589 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CB57BA52ACD2A5500353589 /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
+		9CB57BA72ACEE7BF00353589 /* 長途夜車.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "長途夜車.mp3"; path = "MusicPlayer/MP3/長途夜車.mp3"; sourceTree = SOURCE_ROOT; };
+		9CB57BA82ACEE7BF00353589 /* 感同身受 live.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "感同身受 live.mp3"; path = "MusicPlayer/MP3/感同身受 live.mp3"; sourceTree = SOURCE_ROOT; };
+		9CB57BA92ACEE7BF00353589 /* Anytime Anywhere.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Anytime Anywhere.mp3"; path = "MusicPlayer/MP3/Anytime Anywhere.mp3"; sourceTree = SOURCE_ROOT; };
+		9CB57BAA2ACEE7BF00353589 /* Dancing With Your Ghost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Dancing With Your Ghost.mp3"; path = "MusicPlayer/MP3/Dancing With Your Ghost.mp3"; sourceTree = SOURCE_ROOT; };
+		9CB57BB02ACEE84000353589 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		9CB57BB22ACF0FA100353589 /* PlayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CB57BB92AD05FDF00353589 /* UIImageColors in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +70,37 @@
 		9CB57B902ACD29FB00353589 /* MusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				9CB57B912ACD29FB00353589 /* AppDelegate.swift */,
-				9CB57B932ACD29FB00353589 /* SceneDelegate.swift */,
-				9CB57B952ACD29FB00353589 /* ViewController.swift */,
+				9CB57BAF2ACEE7EF00353589 /* MP3 */,
+				9CB57BB42ACF13D000353589 /* Model */,
+				9CB57BA52ACD2A5500353589 /* MusicPlayerViewController.swift */,
 				9CB57B972ACD29FB00353589 /* Main.storyboard */,
 				9CB57B9A2ACD29FC00353589 /* Assets.xcassets */,
 				9CB57B9C2ACD29FC00353589 /* LaunchScreen.storyboard */,
 				9CB57B9F2ACD29FC00353589 /* Info.plist */,
+				9CB57B932ACD29FB00353589 /* SceneDelegate.swift */,
+				9CB57B912ACD29FB00353589 /* AppDelegate.swift */,
 			);
 			path = MusicPlayer;
+			sourceTree = "<group>";
+		};
+		9CB57BAF2ACEE7EF00353589 /* MP3 */ = {
+			isa = PBXGroup;
+			children = (
+				9CB57BAA2ACEE7BF00353589 /* Dancing With Your Ghost.mp3 */,
+				9CB57BA92ACEE7BF00353589 /* Anytime Anywhere.mp3 */,
+				9CB57BA82ACEE7BF00353589 /* 感同身受 live.mp3 */,
+				9CB57BA72ACEE7BF00353589 /* 長途夜車.mp3 */,
+			);
+			path = MP3;
+			sourceTree = "<group>";
+		};
+		9CB57BB42ACF13D000353589 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CB57BB22ACF0FA100353589 /* PlayMode.swift */,
+				9CB57BB02ACEE84000353589 /* MusicModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +119,9 @@
 			dependencies = (
 			);
 			name = MusicPlayer;
+			packageProductDependencies = (
+				9CB57BB82AD05FDF00353589 /* UIImageColors */,
+			);
 			productName = MusicPlayer;
 			productReference = 9CB57B8E2ACD29FB00353589 /* MusicPlayer.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +150,9 @@
 				Base,
 			);
 			mainGroup = 9CB57B852ACD29FB00353589;
+			packageReferences = (
+				9CB57BB72AD05FDF00353589 /* XCRemoteSwiftPackageReference "UIImageColors" */,
+			);
 			productRefGroup = 9CB57B8F2ACD29FB00353589 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +169,11 @@
 			files = (
 				9CB57B9E2ACD29FC00353589 /* LaunchScreen.storyboard in Resources */,
 				9CB57B9B2ACD29FC00353589 /* Assets.xcassets in Resources */,
+				9CB57BAD2ACEE7BF00353589 /* Anytime Anywhere.mp3 in Resources */,
+				9CB57BAC2ACEE7BF00353589 /* 感同身受 live.mp3 in Resources */,
 				9CB57B992ACD29FB00353589 /* Main.storyboard in Resources */,
+				9CB57BAE2ACEE7BF00353589 /* Dancing With Your Ghost.mp3 in Resources */,
+				9CB57BAB2ACEE7BF00353589 /* 長途夜車.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +184,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CB57B962ACD29FB00353589 /* ViewController.swift in Sources */,
 				9CB57B922ACD29FB00353589 /* AppDelegate.swift in Sources */,
+				9CB57BB12ACEE84000353589 /* MusicModel.swift in Sources */,
+				9CB57BA62ACD2A5500353589 /* MusicPlayerViewController.swift in Sources */,
 				9CB57B942ACD29FB00353589 /* SceneDelegate.swift in Sources */,
+				9CB57BB32ACF0FA100353589 /* PlayMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,8 +346,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -326,8 +374,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -363,6 +411,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9CB57BB72AD05FDF00353589 /* XCRemoteSwiftPackageReference "UIImageColors" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jathu/UIImageColors";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9CB57BB82AD05FDF00353589 /* UIImageColors */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CB57BB72AD05FDF00353589 /* XCRemoteSwiftPackageReference "UIImageColors" */;
+			productName = UIImageColors;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9CB57B862ACD29FB00353589 /* Project object */;
 }
