@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum PlayMode {
     
     case repeatAll

@@ -14,13 +14,15 @@ class MusicPlayerViewController: UIViewController {
     
     let myMusicPlayer = AVPlayer()
     
-    var currentIndex = 3
+    var currentIndex = 2
     
     var gradientLayer: CAGradientLayer!
     
     var playModeImageView : UIImageView?
     
     var playMode : PlayMode? = .repeatAll
+    
+    var timeObserver : Any?
     
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var songNameLabel: UILabel!
@@ -214,12 +216,33 @@ class MusicPlayerViewController: UIViewController {
     
     
     
+    
+    deinit {
+        // 移除通知觀察者
+        NotificationCenter.default.removeObserver(self, name: AVPlayerItem.didPlayToEndTimeNotification, object: nil)
+        
+        // 移除定期時間觀察者
+        if let observer = timeObserver {
+            myMusicPlayer.removeTimeObserver(observer)
+        }
+    }
+    
+    
+    
+    
     // MARK: Function Section -
     
     
     
     // 定義一個名為 playNewSong 的函數，接收一個名為 index 的參數，這個參數是用來指定要播放哪首歌曲
     func playNewSong(from index: Int) {
+        // 移除上一首歌曲的定期時間觀察者
+        if let observer = timeObserver {
+            myMusicPlayer.removeTimeObserver(observer)
+            timeObserver = nil
+        }
+        
+        
         // 使用傳入的索引來從歌曲數組中獲取相應的歌曲信息，並將其設置到界面的標籤和圖片視圖中
         artistLabel.text = songs[index].artist
         songNameLabel.text = songs[index].songName
@@ -254,7 +277,7 @@ class MusicPlayerViewController: UIViewController {
         
         // 使用 addPeriodicTimeObserverForInterval 函數為音樂播放器添加一個周期性時間觀察者
         // 該觀察者每秒觸發一次，用於更新音樂進度條的值
-        myMusicPlayer.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: .main) { time in
+        timeObserver = myMusicPlayer.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: .main) { time in
             // 檢查音樂進度滑塊是否正在被使用者拖動
             if !self.songProgressSliderOutlet.isTracking {
                 // 若音樂進度滑塊沒有被拖動，則調用 updateMusicProgress 函數來更新音樂進度條的值
@@ -314,7 +337,7 @@ class MusicPlayerViewController: UIViewController {
         
         // 使用addPeriodicTimeObserver方法定期更新音樂進度
         // 每秒觸發一次時間觀察者，如果音樂進度滑塊沒有被拖動，則更新音樂進度
-        myMusicPlayer.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: .main) { time in
+        timeObserver = myMusicPlayer.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: .main) { time in
             // 檢查音樂進度滑塊是否正在被使用者拖動
             if !self.songProgressSliderOutlet.isTracking {
                 // 若音樂進度滑塊沒有被拖動，執行以下程式碼以更新音樂進度
