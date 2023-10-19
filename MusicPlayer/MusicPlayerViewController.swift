@@ -416,12 +416,12 @@ class MusicPlayerViewController: UIViewController {
             songProgressSliderOutlet.value = progress
             
             // 使用自定義的 formatSecondsToString 函數將秒數格式化為字符串，並更新 songDurationStartLabel 和 songDurationEndLabel 的文本
-            songDurationStartLabel.text = formatSecondsToString(seconds: currentTimeInSeconds)
-            songDurationEndLabel.text = formatSecondsToString(seconds: durationInSeconds)
+//            songDurationStartLabel.text = formatSecondsToString(seconds: currentTimeInSeconds)
+//            songDurationEndLabel.text = formatSecondsToString(seconds: durationInSeconds)
             
             // 下面的兩行是另一種將秒數格式化為 MM:SS 格式的方法，但已被註釋掉
-            // songDurationStartLabel.text = String(format: "%02d:%02d", Int(currentTimeInSeconds) / 60, Int(currentTimeInSeconds) % 60)
-            // songDurationEndLabel.text = String(format: "%02d:%02d", Int(durationInSeconds) / 60, Int(durationInSeconds) % 60)
+             songDurationStartLabel.text = String(format: "%02d:%02d", Int(currentTimeInSeconds) / 60, Int(currentTimeInSeconds) % 60)
+             songDurationEndLabel.text = String(format: "%02d:%02d", Int(durationInSeconds) / 60, Int(durationInSeconds) % 60)
         } else {
             // 如果無法獲取當前時間或持續時間，則提前返回
             return
